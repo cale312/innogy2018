@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+    <link rel="stylesheet" href="stylesheets/main.css">
+    <title>Innogy | API</title>
+</head>
+  <body>
+      <center class="container">
+            <h2 data-bind = "text: alert" class="red-text"></h2>
+            <div class="input-field col s6">
+              <input value="" type="text" class="validate city" required>
+              <label class="active" for="first_name2">Enter City</label>
+              <button type="button" value="" class="btn waves-effect waves-light search" data-bind="click: search">search
+                  <i class="material-icons right">search</i>
+              </button>
+            </div>
+        <br><br>
+        <div class="row container" data-bind = "foreach: locations">
+            <div class="col s12 m7">
+              <div class="horizontal">
+                <div class="card-image">
+                    <iframe width="500" height="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" 
+                    data-bind = "attr: { src: sourcemap}" style="border: 0px solid black"></iframe>
+                </div>
+                <center>
+                  <div class="card-stacked">
+                      <div class="card-content">
+                        <p>I am a very simple card. I am good at containing small bits of information.</p>
+                      </div>
+                      <div class="card-action">
+                          <div data-bind = "html: AdditionalResources"></div>
+                      </div>
+                    </div>
+                </center>
+              </div>
+            </div>
+      
+          </div>
+      </center>
+  </body>
+</html>
+<script src="javascripts/main.js"></script>
