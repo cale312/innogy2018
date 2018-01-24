@@ -63,11 +63,11 @@ function AppViewModel() {
     const city = $('.city').val();
     const locations = getLocation(city);
     if (locations.length > 0) {
-      self.locations(locations);
       self.alert('');
     } else {
       self.alert('Not found');
     }
+    self.locations(locations);
   };
 }
 
