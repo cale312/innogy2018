@@ -17,38 +17,43 @@
     <title>Innogy | API</title>
 </head>
   <body>
-      <center class="container">
-            <h2 data-bind = "text: alert" class="red-text"></h2>
-            <div class="input-field col s6">
-              <input value="" type="text" class="validate city" required>
-              <label class="active" for="first_name2">Enter City</label>
-              <button type="button" value="" class="btn waves-effect waves-light search" data-bind="click: search">search
-                  <i class="material-icons right">search</i>
-              </button>
+    <br><br><br>
+    <center class="container">
+      <div class="input-field col s6">
+        <input value="" type="text" class="validate city" required>
+        <label class="active" for="first_name2">Enter City</label>
+        <button type="button" value="" class="btn waves-effect waves-light search" data-bind="click: search">search
+            <i class="material-icons right">search</i>
+        </button>
+      </div>
+      <br><br>
+      <h4 data-bind = "text: alert" class=""></h4>
+      <div class="row container" data-bind = "foreach: locations">
+        <div class="col s12">
+          <div class="">
+            <div class="card-image responsive-img">
+              <iframe width="750" height="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" 
+              data-bind = "attr: { src: sourcemap}" style="border: 0px solid black"></iframe>
             </div>
-        <br><br>
-        <div class="row container" data-bind = "foreach: locations">
-            <div class="col s12 m7">
-              <div class="horizontal">
-                <div class="card-image">
-                    <iframe width="500" height="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" 
-                    data-bind = "attr: { src: sourcemap}" style="border: 0px solid black"></iframe>
+            <center>
+              <div class="card-stacked">
+                <div class="card-content">
+                  <p data-bind = "text: projectName"></p>
+                  <p data-bind = "text: projectType"></p>
+                  <p data-bind ="text: status"></p>
+                  <p data-bind = "countryName"></p>
+                  <div class="card-action">
+                      <div data-bind = "html: AdditionalResources"></div>
+                  </div>
                 </div>
-                <center>
-                  <div class="card-stacked">
-                      <div class="card-content">
-                        <p>I am a very simple card. I am good at containing small bits of information.</p>
-                      </div>
-                      <div class="card-action">
-                          <div data-bind = "html: AdditionalResources"></div>
-                      </div>
-                    </div>
-                </center>
-              </div>
-            </div>
-      
+                <hr>
+                </div>
+            </center>
           </div>
-      </center>
+      </div>
+      </div>
+      <div data-bind = "html: loader"></div>
+    </center>
   </body>
 </html>
 <script src="javascripts/main.js"></script>

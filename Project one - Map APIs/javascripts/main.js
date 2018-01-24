@@ -45,11 +45,13 @@ $.getJSON(apiUrl)
 
 const getLocation = (searchCity) => {
   const theProjects = [];
-  citiesData.forEach((item) => {
-    if (item.city.toLowerCase().trim() === searchCity.toLowerCase().trim()) {
-      theProjects.push(item);
-    }
-  });
+  if (searchCity.trim().length > 0) {
+    citiesData.forEach((item) => {
+      if (item.city.toLowerCase().trim() === searchCity.toLowerCase().trim()) {
+        theProjects.push(item);
+      }
+    });
+  }
   return theProjects;
 };
 
@@ -57,17 +59,26 @@ function AppViewModel() {
   const self = this;
   self.locations = ko.observable([]);
   self.alert = ko.observable();
+  self.loader = ko.observable();
 
   // Search function
   self.search = () => {
+    self.loader('<div class="preloader-wrapper big active"><div class="spinner-layer spinner-green-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div></div>');
+    self.locations('');
+    self.alert('');
     const city = $('.city').val();
     const locations = getLocation(city);
     if (locations.length > 0) {
       self.alert('');
     } else {
-      self.alert('Not found');
+      setTimeout(() => {
+        self.alert('Not found!');
+      }, 2000);
     }
-    self.locations(locations);
+    setTimeout(() => {
+      self.loader('');
+      self.locations(locations);
+    }, 2000);
   };
 }
 
