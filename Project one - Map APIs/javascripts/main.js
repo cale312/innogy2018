@@ -1,9 +1,5 @@
 const apiUrl = 'https://developer.nrel.gov/api/windexchange/schoolprojects?api_key=BpwET3I8qcPGHgBcgcECMNuYXfDVEz3zwKN00w1f';
 
-/* function takes in a city name, using ajax, call the api and
-loop through all the data and find the city name that mathces
-the passed in city name, returns src for the coordinates from that city */
-
 let citiesData = null;
 
 function Project(
@@ -46,9 +42,10 @@ function getData() {
 
 const getLocation = (searchCity) => {
   const theProjects = [];
+  console.log(searchCity);
   if (searchCity.trim().length > 0) {
     citiesData.forEach((item) => {
-      if (item.city.toLowerCase() === searchCity.toLowerCase().trim()) {
+      if (item.city.toLowerCase() === searchCity.toLowerCase().trim() || item.address.toLowerCase() === searchCity.toLowerCase().trim()) {
         theProjects.push(item);
       }
     });
@@ -76,7 +73,6 @@ function AppViewModel() {
     })
     .catch(err => err);
 
-  // Search function
   self.search = () => {
     self.loader('<div class="preloader-wrapper big active"><div class="spinner-layer spinner-green-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div></div>');
     self.locations('');
