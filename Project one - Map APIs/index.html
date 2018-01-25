@@ -18,7 +18,7 @@
 </head>
   <body>
     <br><br><br>
-    <center><h1>School Finder</h1></center>
+    <center><h1 class="container white-text #4db6ac teal lighten-2 " >School Finder</h1></center>
     <br><br><br>
     <center class="container">
       <div class="input-field col s6">
@@ -33,15 +33,15 @@
       <div class="row container" data-bind = "foreach: locations">
         <div class="col s12">
           <div class="">
+              <h4 data-bind = "text: city" class = "white-text #4db6ac teal lighten-2" ></h4> 
             <div class="card-image responsive-img">
-              <div data-bind = "html: sourcemap"></div>
+              <div data-bind = "html: sourcemap" class="container"></div>
             </div>
             <center>
               <div class="card-stacked">
                 <div class="card-content">
                   <p data-bind = "text: address"></p>
                   <p data-bind = "text: postalCode"></p>
-                  <p data-bind = "text: city"></p> 
                   <p data-bind = "text: province"></p>
                   <p data-bind = "text: countryName"></p>                 
                   <p data-bind = "text: projectName"></p>
