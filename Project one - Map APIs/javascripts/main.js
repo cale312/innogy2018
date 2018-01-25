@@ -8,6 +8,7 @@ let citiesData = null;
 
 function Project(
   sourcemap,
+  address,
   AdditionalResources,
   city,
   countryName,
@@ -19,6 +20,7 @@ function Project(
   technologyDescription,
 ) {
   this.sourcemap = sourcemap;
+  this.address = address;
   this.AdditionalResources = AdditionalResources;
   this.city = city;
   this.countryName = countryName;
@@ -34,7 +36,11 @@ $.getJSON(apiUrl)
   .then((data) => {
     const locations = [];
     data.forEach((dataCity) => {
+<<<<<<< HEAD
       locations.push(new Project(`<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/export/embed.html?bbox=${dataCity.Longitude}%2C${dataCity.Latitude}&amp;layer=mapnik&amp;marker=${dataCity.Latitude}%2C${dataCity.Longitude}" style="border: 1px solid black"></iframe>`, dataCity.AdditionalResources, dataCity.City, dataCity.CountryName, dataCity.PostalCode, dataCity.ProjectName, dataCity.ProjectType, dataCity.Province, dataCity.Status, dataCity.TechnologyDescription));
+=======
+      locations.push(new Project(`http://www.openstreetmap.org/export/embed.html?bbox=${dataCity.Longitude},${dataCity.Latitude}&amp;layer=mapnik`, dataCity.Address, dataCity.AdditionalResources, dataCity.City, dataCity.CountryName, dataCity.PostalCode, dataCity.ProjectName, dataCity.ProjectType, dataCity.Province, dataCity.Status, dataCity.TechnologyDescription));
+>>>>>>> 585d74ad7e15050986b9a2df5a3349bd7ff97b97
     });
     console.log('DATA LOADED!', locations);
     citiesData = locations;
