@@ -14,56 +14,64 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
     <link rel="stylesheet" href="stylesheets/main.css">
-    <title>Innogy | API</title>
+    <title>Innogy | Map APIs</title>
 </head>
-  <body>
-    <div class="container"><h4 data-bind = "text: loading"></p></div>
-    <div class="data" data-bind = "visible: data">
-      <center><h1 class="container white-text #4db6ac teal lighten-2">School Finder</h1></center>
-      <br>
-      <center class="container">
-        <div class="input-field col s6">
-          <input value="" type="text" class="validate city" required>
-          <label class="active" for="first_name2">Enter City</label>
-          <button type="button" value="" class="btn waves-effect waves-light search" data-bind="click: search">search
-              <i class="material-icons right">search</i>
-          </button>
-        </div>
-        <br><br>
-        <h4 data-bind = "text: alert" class=""></h4>
-        <div class="row container" data-bind = "foreach: locations">
-          <div class="col s12">
-            <div class="">
-                <h4 data-bind = "text: city" class = "white-text #4db6ac teal lighten-2" ></h4> 
-              <div class="card-image responsive-img">
-                <div data-bind = "html: sourcemap" class="container"></div>
-              </div>
-              <center>
-                <div class="card-stacked">
-                  <div class="card-content">
-                    <p data-bind = "text: address"></p>
-                    <p data-bind = "text: postalCode"></p>
-                    <p data-bind = "text: province"></p>
-                    <p data-bind = "text: countryName"></p>                 
-                    <p data-bind = "text: projectName"></p>
-                    <p data-bind = "text: projectType"></p>
-                    <p data-bind ="text: status"></p>
-                    <p data-bind = "text: contactName"></p>
-                    <p data-bind = "text: contactEmailAddress"></p>
-                    <div class="card-action">
-                        <div data-bind = "html: additionalResources"></div>
-                    </div>
-                    <div data-bind = "html: discussion"></div>
-                  </div>
-                  <hr>
-                  </div>
-              </center>
+<nav>
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo"><i class="material-icons right">map</i></a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="#">Home</a></li>
+    </ul>
+  </div>
+</nav>
+<body>
+  <div class="container"><h4 data-bind = "text: loading"></p></div>
+  <div class="data" data-bind = "visible: data">
+    <center><h1 class="container red-text text-lighten-2">School Finder</h1></center>
+    <br>
+    <center class="container">
+      <div class="input-field col s6">
+        <input value="" type="text" class="validate city">
+        <label class="active" for="">Enter City</label>
+        <button type="button" value="" class="btn waves-effect waves-light search" data-bind="click: search">search
+            <i class="material-icons right">search</i>
+        </button>
+      </div>
+      <br><br>
+      <h4 data-bind = "text: alert" class=""></h4>
+      <div class="row container" data-bind = "foreach: locations">
+        <div class="col s12">
+          <div class="">
+              <h4 data-bind = "text: city" class = "white-text #4db6ac teal lighten-2" ></h4> 
+            <div class="card-image responsive-img">
+              <div data-bind = "html: sourcemap" class="container"></div>
             </div>
-        </div>
-        </div>
-        <div data-bind = "html: loader"></div>
-      </center>
-    </div>
-  </body>
+            <center>
+              <div class="card-stacked">
+                <div class="card-content">
+                  <p data-bind = "text: address"></p>
+                  <p data-bind = "text: postalCode"></p>
+                  <p data-bind = "text: province"></p>
+                  <p data-bind = "text: countryName"></p>                 
+                  <p data-bind = "text: projectName"></p>
+                  <p data-bind = "text: projectType"></p>
+                  <p data-bind ="text: status"></p>
+                  <p data-bind = "text: contactName"></p>
+                  <p data-bind = "text: contactEmailAddress"></p>
+                  <div class="card-action">
+                      <div data-bind = "html: additionalResources"></div>
+                  </div>
+                  <div data-bind = "html: discussion"></div>
+                </div>
+                <hr>
+                </div>
+            </center>
+          </div>
+      </div>
+      </div>
+      <div data-bind = "html: loader"></div>
+    </center>
+  </div>
+</body>
 </html>
 <script src="javascripts/main.min.js"></script>
