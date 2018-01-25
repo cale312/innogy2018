@@ -9,7 +9,11 @@ let citiesData = null;
 function Project(
   sourcemap,
   address,
-  AdditionalResources,
+  additionalResources,
+  discussion,
+  contactEmailAddress,
+  contactName,
+  contactPhone,
   city,
   countryName,
   postalCode,
@@ -20,23 +24,27 @@ function Project(
   technologyDescription,
 ) {
   this.sourcemap = sourcemap;
-  this.address = address;
-  this.AdditionalResources = AdditionalResources;
-  this.city = city;
-  this.countryName = countryName;
+  this.address = $.trim(address);
+  this.additionalResources = additionalResources;
+  this.discussion = $.trim(discussion);
+  this.contactEmailAddress = $.trim(contactEmailAddress);
+  this.contactName = $.trim(contactName);
+  this.contactPhone = $.trim(contactPhone);
+  this.city = $.trim(city);
+  this.countryName = $.trim(countryName);
   this.postalCode = postalCode;
-  this.projectName = projectName;
-  this.projectType = projectType;
-  this.province = province;
-  this.status = status;
-  this.technologyDescription = technologyDescription;
+  this.projectName = $.trim(projectName);
+  this.projectType = $.trim(projectType);
+  this.province = $.trim(province);
+  this.status = $.trim(status);
+  this.technologyDescription = $.trim(technologyDescription);
 }
 
 $.getJSON(apiUrl)
   .then((data) => {
     const locations = [];
     data.forEach((dataCity) => {
-      locations.push(new Project(`<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/export/embed.html?bbox=${dataCity.Longitude}%2C${dataCity.Latitude}&amp;layer=mapnik&amp;marker=${dataCity.Latitude}%2C${dataCity.Longitude}" style="border: 1px solid black"></iframe>`, dataCity.Adress, dataCity.AdditionalResources, dataCity.City, dataCity.CountryName, dataCity.PostalCode, dataCity.ProjectName, dataCity.ProjectType, dataCity.Province, dataCity.Status, dataCity.TechnologyDescription));
+      locations.push(new Project(`<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/export/embed.html?bbox=${dataCity.Longitude}%2C${dataCity.Latitude}&amp;layer=mapnik&amp;marker=${dataCity.Latitude}%2C${dataCity.Longitude}" style="border: 1px solid black"></iframe>`, dataCity.Address, dataCity.additionalResources, dataCity.Discussion, dataCity.ContactEmailAddress, dataCity.ContactName, dataCity.ContactPhone, dataCity.City, dataCity.CountryName, dataCity.PostalCode, dataCity.ProjectName, dataCity.ProjectType, dataCity.Province, dataCity.Status, dataCity.TechnologyDescription));
     });
     console.log('DATA LOADED!', locations);
     citiesData = locations;
@@ -49,11 +57,12 @@ const getLocation = (searchCity) => {
   const theProjects = [];
   if (searchCity.trim().length > 0) {
     citiesData.forEach((item) => {
-      if (item.city.toLowerCase().trim() === searchCity.toLowerCase().trim()) {
+      if (item.city.toLowerCase() === searchCity.toLowerCase().trim()) {
         theProjects.push(item);
       }
     });
   }
+  console.log(theProjects);
   return theProjects;
 };
 
