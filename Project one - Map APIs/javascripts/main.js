@@ -8,6 +8,7 @@ let citiesData = null;
 
 function Project(
   sourcemap,
+  address,
   AdditionalResources,
   city,
   countryName,
@@ -19,6 +20,7 @@ function Project(
   technologyDescription,
 ) {
   this.sourcemap = sourcemap;
+  this.address = address;
   this.AdditionalResources = AdditionalResources;
   this.city = city;
   this.countryName = countryName;
@@ -34,7 +36,7 @@ $.getJSON(apiUrl)
   .then((data) => {
     const locations = [];
     data.forEach((dataCity) => {
-      locations.push(new Project(`http://www.openstreetmap.org/export/embed.html?bbox=${dataCity.Longitude},${dataCity.Latitude}&amp;layer=mapnik`, dataCity.AdditionalResources, dataCity.City, dataCity.CountryName, dataCity.PostalCode, dataCity.ProjectName, dataCity.ProjectType, dataCity.Province, dataCity.Status, dataCity.TechnologyDescription));
+      locations.push(new Project(`http://www.openstreetmap.org/export/embed.html?bbox=${dataCity.Longitude},${dataCity.Latitude}&amp;layer=mapnik`, dataCity.Address, dataCity.AdditionalResources, dataCity.City, dataCity.CountryName, dataCity.PostalCode, dataCity.ProjectName, dataCity.ProjectType, dataCity.Province, dataCity.Status, dataCity.TechnologyDescription));
     });
     console.log('DATA LOADED!', locations);
     citiesData = locations;
