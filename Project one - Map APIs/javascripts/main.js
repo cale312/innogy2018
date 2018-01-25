@@ -42,7 +42,6 @@ function getData() {
 
 const getLocation = (searchCity) => {
   const theProjects = [];
-  console.log(searchCity);
   if (searchCity.trim().length > 0) {
     citiesData.forEach((item) => {
       if (item.city.toLowerCase() === searchCity.toLowerCase().trim() || item.address.toLowerCase() === searchCity.toLowerCase().trim()) {
