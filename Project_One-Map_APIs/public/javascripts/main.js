@@ -80,9 +80,6 @@ function AppViewModel() {
     const locations = getLocation(city);
     if (locations.length > 0) {
       self.alert('');
-    } else if (locations.length === 0) {
-      self.loader('');
-      self.alert('Please enter valid city name or address');
     } else {
       setTimeout(() => {
         self.alert('Not found!');

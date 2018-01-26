@@ -1,102 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import jQuery before materialize.js-->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-      <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
-    <link rel="stylesheet" href="stylesheets/main.css">
-    <title>Innogy | Map APIs</title>
-    <style>    
-      nav ul li a{
-        color: black;
-      }    
-      </style>
-</head>
-<nav class="white yellow-text lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">
-      <img width="50" height="60" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Innogy_Logo.svg/1200px-Innogy_Logo.svg.png" alt="">
-    </a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
 
-      <ul id="nav-mobile" class="side-nav">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
-      </ul>
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="cyan-text text-darken-4 material-icons">menu</i></a>
-    </div>
-  </nav>
-<body>
-  <div class="container"><p data-bind = "html: loading"></p></div>
-  <div class="data" data-bind = "visible: data">
-    <center><h1 class="container blue-text text-lighten-2">School Finder</h1></center>
-    <br>
-    <center class="container">
-      <div class="input-field col s6">
-        <input value="" type="text" class="validate city">
-        <label class="active" for="">enter city or address</label>
-        <button type="button" value="" class="btn btn-large waves-effect waves-light search" data-bind="click: search">search
-            <i class="material-icons right">search</i>
-        </button>
-      </div>
-      <br><br>
-      <h4 data-bind = "text: alert" class=""></h4>
-      <div class="row" data-bind = "foreach: locations">
-        <div class="col s6">
-          <div class="">
-              <h4 data-bind = "text: city" class = "white-text blue lighten-2" ></h4> 
-            <div class="card-image responsive-img">
-              <div data-bind = "html: sourcemap" class="container"></div>
-            </div>
-            <center>
-              <div class="card-stacked">
-                <div class="card-content">
-                  <p data-bind = "text: address"></p>
-                  <p data-bind = "text: postalCode"></p>
-                  <p data-bind = "text: province"></p>
-                  <p data-bind = "text: countryName"></p>                 
-                  <p data-bind = "text: projectName"></p>
-                  <p data-bind = "text: projectType"></p>
-                  <p data-bind ="text: status"></p>
-                  <p data-bind = "text: contactName"></p>
-                  <p data-bind = "text: contactEmailAddress"></p>
-                  <div class="card-action">
-                      <div data-bind = "html: additionalResources"></div>
-                  </div>
-                  <div data-bind = "html: discussion"></div>
-                </div>
-                <hr>
-                </div>
-            </center>
-          </div>
-      </div>
-      </div>
-      <div data-bind = "html: loader"></div>
-    </center>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+  <link rel="stylesheet" href="stylesheets/main.css">
+  <title>Innogy | Map APIs</title>
+  <style>
+    nav ul li a {
+      color: black;
+    }
+  </style>
+</head>
+<nav class="white lighten-5" role="navigation">
+  <div class="nav-wrapper container">
+    <a id="logo-container" href="#" class="brand-logo">
+      <img width="50" height="60" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Innogy_Logo.svg/1200px-Innogy_Logo.svg.png"
+        alt="">
+    </a>
+    <ul class="right hide-on-med-and-down">
+      <li>
+        <a href="index.html">Home</a>
+      </li>
+      <li>
+        <a href="search.html">Search</a>
+      </li>
+      <li>
+        <a href="#">Contact</a>
+      </li>
+    </ul>
+
+    <ul id="nav-mobile" class="side-nav">
+      <li>
+        <a href="index.html">Home</a>
+      </li>
+      <li>
+        <a href="search.html">Search</a>
+      </li>
+      <li>
+        <a href="#">Contact</a>
+      </li>
+    </ul>
+    <a href="#" data-activates="nav-mobile" class="button-collapse">
+      <i class="cyan-text text-darken-4 material-icons">menu</i>
+    </a>
   </div>
+</nav>
+
+<body>
+  <center>
+    <!-- <h1 class="container blue-text text-lighten-2">energy school project finder</h1> -->
+  </center>
 </body>
+
 </html>
-<script src="javascripts/main.js"></script>
 
 <script>
-  (function($){
-  $(function(){
+  (function ($) {
+    $(function () {
 
-    $('.button-collapse').sideNav();
+      $('.button-collapse').sideNav();
 
-  }); // end of document ready
-})(jQuery); // end of jQuery name space
+    }); // end of document ready
+  })(jQuery); // end of jQuery name space
 </script>

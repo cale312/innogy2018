@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+  <link rel="stylesheet" href="stylesheets/main.css">
+  <title>Innogy | Search</title>
+  <style>
+    nav ul li a {
+      color: black;
+    }
+  </style>
+</head>
+<nav class="white yellow-text lighten-1" role="navigation">
+  <div class="nav-wrapper container">
+    <a id="logo-container" href="#" class="brand-logo">
+      <img width="50" height="60" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Innogy_Logo.svg/1200px-Innogy_Logo.svg.png"
+        alt="">
+    </a>
+    <ul class="right hide-on-med-and-down">
+      <li>
+        <a href="index.html">Home</a>
+      </li>
+      <li>
+        <a href="search.html">Search</a>
+      </li>
+      <li>
+        <a href="#">Contact</a>
+      </li>
+    </ul>
+
+    <ul id="nav-mobile" class="side-nav">
+      <li>
+        <a href="index.html">Home</a>
+      </li>
+      <li>
+        <a href="search.html">Search</a>
+      </li>
+      <li>
+        <a href="#">Contact</a>
+      </li>
+    </ul>
+    <a href="#" data-activates="nav-mobile" class="button-collapse">
+      <i class="cyan-text text-darken-4 material-icons">menu</i>
+    </a>
+  </div>
+</nav>
+
+<body>
+  <div class="container">
+    <p data-bind="html: loading"></p>
+  </div>
+  <div class="data container" data-bind="visible: data">
+    <center>
+      <h1 class="container white-text text-lighten-4 large">energy school project finder</h1>
+    </center>
+    <br>
+    <div class="input-field container inline">
+      <input value="" type="text" class="white-text validate city">
+      <label class="active" for="">enter city or address</label>
+      <button type="button" value="" class="btn btn-large waves-effect waves-light search" data-bind="click: search">search
+        <i class="material-icons right">search</i>
+      </button>
+    </div>
+    <br>
+    <br>
+    <h4 data-bind="text: alert" class=""></h4>
+  </div>
+  <div class="row lighten-4" data-bind="foreach: locations">
+    <div class="col s6">
+        <div class="">
+            <h4 data-bind="text: city" class="white-text"></h4>
+            <div data-bind="html: sourcemap" class="container"></div>
+        </div>
+    </div>
+    <div class="col s6 white lighten-5">
+      <div class="left">
+        Address: <span data-bind="text: address"></span><br>
+        Postal Code: <span data-bind="text: postalCode"></span><br>
+        Province: <span data-bind="text: province"></span><br>
+        Country Name: <span data-bind="text: countryName"></span><br>
+        Project Name: <span data-bind="text: projectName"></span><br>
+        Project Type: <span data-bind="text: projectType"></span><br>
+        Project Status: <span data-bind="text: status"></span><br>
+        Contact Name: <span data-bind="text: contactName"></span><br>
+        Contact Email Address: <span data-bind="text: contactEmailAddress"></span><br>
+        Additional Recources: <div class="card-action">
+          <div data-bind="html: additionalResources"></div>
+        </div><br>
+        Discussion: <div data-bind="html: discussion"></div>
+      </div>
+      <div class="devider"></div>
+    </div>
+    <hr style="clear:both">
+  </div>
+  <center data-bind="html: loader"></center>
+</body>
+</html>
+<script src="javascripts/main.js"></script>
+
+<script>
+  (function ($) {
+    $(function () {
+
+      $('.button-collapse').sideNav();
+
+    }); // end of document ready
+  })(jQuery); // end of jQuery name space
+</script>

@@ -1,5 +1,8 @@
 body {
     font-family: Helvetica;
+    background: url(http://wallpaper.pickywallpapers.com/1600x900/battlefield-3-wind-energy.jpg) no-repeat;
+    background-size: auto;
+    background-attachment: fixed
 }
 
 .data {
