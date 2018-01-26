@@ -12,7 +12,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node Prpject_One-Map_APIs/server.js"
+    "start": "node Project_One-Map_APIs/server.js"
   },
   "repository": {
     "type": "git",
