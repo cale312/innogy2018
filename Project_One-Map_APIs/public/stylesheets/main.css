@@ -1,0 +1,13 @@
+body {
+    font-family: Helvetica;
+}
+
+.data {
+    animation: fade 2s;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+}

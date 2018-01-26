@@ -1,0 +1,19 @@
+{
+  "name": "project_one-map_apis",
+  "description": "A web-app with a map-like view that parses all the energy education and training programs, from the [Education Projects](https://developer.nrel.gov/docs/wind/educationprojects/) API",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "node server.js"
+  },
+  "author": "cale & nelson",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.14.11"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "path": "^0.12.7"
+  }
+}
