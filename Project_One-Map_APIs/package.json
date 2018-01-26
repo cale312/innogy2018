@@ -10,10 +10,13 @@
   "author": "cale & nelson",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^1.14.11"
+    "nodemon": "^1.14.11",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0"
   },
   "dependencies": {
     "express": "^4.16.2",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "eslint": "^4.16.0"
   }
 }
