@@ -14,6 +14,7 @@
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Innogy_Logo.svg/1200px-Innogy_Logo.svg.png">
   <link rel="stylesheet" href="stylesheets/main.css">
   <title>Innogy | Search</title>
   <style>
@@ -33,7 +34,7 @@
         <a href="index.html">Home</a>
       </li>
       <li>
-        <a href="search.html">Search</a>
+        <a href="search.html">Projects</a>
       </li>
       <li>
         <a href="#">Contact</a>
@@ -45,7 +46,7 @@
         <a href="index.html">Home</a>
       </li>
       <li>
-        <a href="search.html">Search</a>
+        <a href="search.html">Projects</a>
       </li>
       <li>
         <a href="#">Contact</a>
@@ -63,28 +64,28 @@
   </div>
   <div class="data container" data-bind="visible: data">
     <center>
-      <h1 class="container white-text text-lighten-4 large">energy school project finder</h1>
+      <!-- <h1 class="white-text text-lighten-4 large">energy school project finder</h1> -->
     </center>
     <br>
-    <div class="input-field container inline">
+    <center class="input-field container inline">
       <input value="" type="text" class="white-text validate city">
-      <label class="active" for="">enter city or address</label>
+      <label class="active" for="">ENTER CITY NAME OR ADRESS</label>
       <button type="button" value="" class="btn btn-large waves-effect waves-light search" data-bind="click: search">search
         <i class="material-icons right">search</i>
       </button>
-    </div>
+    </center>
     <br>
     <br>
     <h4 data-bind="text: alert" class=""></h4>
   </div>
-  <div class="row lighten-4" data-bind="foreach: locations">
+  <div class="row lighten-4 white-text" data-bind="foreach: locations">
     <div class="col s6">
-        <div class="">
+        <div class="video-container responsive-video">
             <h4 data-bind="text: city" class="white-text"></h4>
             <div data-bind="html: sourcemap" class="container"></div>
         </div>
     </div>
-    <div class="col s6 white lighten-5">
+    <div class="col s6 lighten-5">
       <div class="left">
         Address: <span data-bind="text: address"></span><br>
         Postal Code: <span data-bind="text: postalCode"></span><br>
@@ -102,7 +103,7 @@
       </div>
       <div class="devider"></div>
     </div>
-    <hr style="clear:both">
+    <hr style="clear:both; visibility:hidden;">
   </div>
   <center data-bind="html: loader"></center>
 </body>
