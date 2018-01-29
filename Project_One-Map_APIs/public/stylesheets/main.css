@@ -5,6 +5,10 @@ body {
     background-attachment: fixed
 }
 
+.m-devider {
+    display: none !important;
+}
+
 .data {
     animation: fade 2s;
 }
@@ -12,5 +16,19 @@ body {
 @keyframes fade {
     from {
         opacity: 0;
+    }
+}
+
+@media screen and (max-width: 360px) and (min-width: 340px) {
+    .map {
+        width: 330px;
+        height: 330px;
+    }
+    .details {
+        width: 100% !important;
+    }
+    .m-devider {
+        visibility: visible;
+        clear: both;
     }
 }

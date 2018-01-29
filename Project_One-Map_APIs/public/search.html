@@ -78,15 +78,16 @@
     <br>
     <h4 data-bind="text: alert" class=""></h4>
   </div>
-  <div class="row lighten-4 white-text" data-bind="foreach: locations">
+  <div class="row lighten-4 white-text" data-bind="foreach: locations" style="background: linear-gradient(rgba(255, 255, 255, 0), rgba(32, 32, 32, 0.301), rgba(255, 255, 255, 0));">
+    <strong style="padding:50px;"><h4 data-bind="text: projectName" class="black-text white lighten-5 center"></h4></strong>
     <div class="col s6">
-        <div class="video-container responsive-video">
-            <h4 data-bind="text: city" class="white-text"></h4>
+        <div class="video-container responsive-video map">
             <div data-bind="html: sourcemap" class="container"></div>
         </div>
     </div>
-    <div class="col s6 lighten-5">
-      <div class="left">
+    <hr class="devider m-devider">
+    <div class="col s6 lighten-5 details">
+      <div class="">
         Address: <span data-bind="text: address"></span><br>
         Postal Code: <span data-bind="text: postalCode"></span><br>
         Province: <span data-bind="text: province"></span><br>
