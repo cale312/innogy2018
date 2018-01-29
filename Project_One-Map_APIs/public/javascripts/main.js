@@ -1,7 +1,9 @@
+// shool projects api variable
 const apiUrl = 'https://developer.nrel.gov/api/windexchange/schoolprojects?api_key=BpwET3I8qcPGHgBcgcECMNuYXfDVEz3zwKN00w1f';
 
 let citiesData = null;
 
+// Class for creating a new project instance with its details for displaying to the dom
 function Project(
   sourcemap,
   address,
@@ -36,10 +38,15 @@ function Project(
   this.technologyDescription = $.trim(technologyDescription);
 }
 
+// Function for getting all the data from the api using
+// ajax call and returns results in promise form
 function getData() {
   return $.getJSON(apiUrl);
 }
 
+// Funtion that takes in a city name or addres and iterates through the data returned
+// by the api to find the match by either adress or city name,
+// the data is returned in array form with objects
 const getLocation = (searchCity) => {
   const theProjects = [];
   if (searchCity.trim().length > 0) {
@@ -60,6 +67,8 @@ function AppViewModel() {
   self.data = ko.observable(false);
   self.loading = ko.observable('<center><br><div class="progress ligth"><div class="indeterminate" style="width: 50%"></div></div></center>');
 
+  // Fire the getdata functiion and store
+  // the data for easy access in an empty variable already sorted.
   getData()
     .then((data) => {
       const locations = [];
@@ -72,6 +81,8 @@ function AppViewModel() {
     })
     .catch(err => err);
 
+  // function fired when the search button is pressed
+  // it takes in the typed in text and passes it in as an arguement for the getLocation function
   self.search = () => {
     self.loader('<div class="preloader-wrapper big active"><div class="spinner-layer spinner-green-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div></div>');
     self.locations('');
