@@ -6,7 +6,7 @@ let citiesData = null;
 const autoCompleteData = {};
 
 // Class for creating a new project instance with its details for displaying to the dom
-function Project(
+function ProjectDetails(
   sourcemap,
   address,
   additionalResources,
@@ -49,21 +49,21 @@ function getData() {
 // Funtion that takes in a city name or addres and iterates through the data returned
 // by the api to find the match by either adress or city name,
 // the data is returned in array form with objects
-const getLocation = (searchCity) => {
-  const theProjects = [];
+const getLocations = (searchCity) => {
+  const schoolProjects = [];
   if (searchCity.trim().length > 0) {
     citiesData.forEach((item) => {
       if (item.city.toLowerCase() === searchCity.toLowerCase().trim()) {
-        theProjects.push(item);
+        schoolProjects.push(item);
       }
     });
   }
-  return theProjects;
+  return schoolProjects;
 };
 
 function AppViewModel() {
   const self = this;
-  self.allCities = ko.observable([]);
+  self.allProjects = ko.observable([]);
   self.locations = ko.observable([]);
   self.alert = ko.observable();
   self.loader = ko.observable();
@@ -75,13 +75,13 @@ function AppViewModel() {
   getData()
     .then((data) => {
       const locations = [];
-      data.forEach((dataCity) => {
-        locations.push(new Project(`<iframe width="150%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=${dataCity.Longitude}%2C${dataCity.Latitude}&amp;layer=mapnik&amp;marker=${dataCity.Latitude}%2C${dataCity.Longitude}"></iframe>`, dataCity.Address, dataCity.AdditionalResources, dataCity.Discussion, dataCity.ContactEmailAddress, dataCity.ContactName, dataCity.ContactPhone, dataCity.City, dataCity.CountryName, dataCity.PostalCode, dataCity.ProjectName, dataCity.ProjectType, dataCity.Province, dataCity.Status, dataCity.TechnologyDescription));
-        if (autoCompleteData[dataCity.City] === undefined) {
-          autoCompleteData[dataCity.City] = null;
+      data.forEach((schoolProjectData) => {
+        locations.push(new ProjectDetails(`<iframe width="150%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=${schoolProjectData.Longitude}%2C${schoolProjectData.Latitude}&amp;layer=mapnik&amp;marker=${schoolProjectData.Latitude}%2C${schoolProjectData.Longitude}"></iframe>`, schoolProjectData.Address, schoolProjectData.AdditionalResources, schoolProjectData.Discussion, schoolProjectData.ContactEmailAddress, schoolProjectData.ContactName, schoolProjectData.ContactPhone, schoolProjectData.City, schoolProjectData.CountryName, schoolProjectData.PostalCode, schoolProjectData.ProjectName, schoolProjectData.ProjectType, schoolProjectData.Province, schoolProjectData.Status, schoolProjectData.TechnologyDescription));
+        if (autoCompleteData[schoolProjectData.City] === undefined) {
+          autoCompleteData[schoolProjectData.City] = null;
         }
       });
-      self.allCities(locations);
+      self.allProjects(locations);
       self.data(true);
       self.loading('');
       $(() => {
@@ -94,13 +94,13 @@ function AppViewModel() {
     .catch(err => err);
 
   // function fired when the search button is pressed
-  // it takes in the typed in text and passes it in as an arguement for the getLocation function
+  // it takes in the typed in text and passes it in as an arguement for the getLocations function
   self.search = () => {
     self.loader('<div class="preloader-wrapper big active"><div class="spinner-layer spinner-green-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div></div>');
     self.locations('');
     self.alert('');
     const city = $('.city').val();
-    const locations = getLocation(city);
+    const locations = getLocations(city);
     if (locations.length > 0) {
       self.alert('');
     } else {
