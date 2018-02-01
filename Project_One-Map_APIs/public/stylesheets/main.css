@@ -4,6 +4,10 @@ body {
     background-image: url("../imgs/battlefield-3-wind-energy.jpg")
 }
 
+.city {
+    text-transform: capitalize;
+}
+
 .m-devider {
     display: none !important;
 }
