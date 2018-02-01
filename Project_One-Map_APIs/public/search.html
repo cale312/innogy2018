@@ -23,7 +23,7 @@
     }
   </style>
 </head>
-<nav class="white yellow-text lighten-1" role="navigation">
+<nav class="white lighten-1" role="navigation">
   <div class="nav-wrapper container">
     <a id="logo-container" href="index.html" class="brand-logo">
       <img width="50" height="60" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Innogy_Logo.svg/1200px-Innogy_Logo.svg.png"
@@ -68,8 +68,8 @@
     </center>
     <br>
     <center class="input-field container inline">
-      <input value="" type="text" class="white-text validate city">
-      <label class="active" for="">ENTER CITY NAME OR ADRESS</label>
+      <input value="" type="text" class="white-text validate city autocomplete">
+      <label class="active" for="">ENTER CITY NAME</label>
       <button type="button" value="" class="btn btn-large waves-effect waves-light search" data-bind="click: search">search
         <i class="material-icons right">search</i>
       </button>
@@ -78,32 +78,61 @@
     <br>
     <h4 data-bind="text: alert" class=""></h4>
   </div>
-  <div class="row lighten-4 white-text" data-bind="foreach: locations" style="background: linear-gradient(rgba(255, 255, 255, 0), rgba(32, 32, 32, 0.301), rgba(255, 255, 255, 0));">
-    <strong style="padding:50px;"><h4 data-bind="text: projectName" class="black-text white lighten-5 center"></h4></strong>
-    <div class="col s6">
-        <div class="video-container responsive-video map">
-            <div data-bind="html: sourcemap" class="container"></div>
-        </div>
-    </div>
-    <hr class="devider m-devider">
-    <div class="col s6 lighten-5 details">
-      <div class="">
-        Address: <span data-bind="text: address"></span><br>
-        Postal Code: <span data-bind="text: postalCode"></span><br>
-        Province: <span data-bind="text: province"></span><br>
-        Country Name: <span data-bind="text: countryName"></span><br>
-        Project Name: <span data-bind="text: projectName"></span><br>
-        Project Type: <span data-bind="text: projectType"></span><br>
-        Project Status: <span data-bind="text: status"></span><br>
-        Contact Name: <span data-bind="text: contactName"></span><br>
-        Contact Email Address: <span data-bind="text: contactEmailAddress"></span><br>
-        Additional Recources: <div class="card-action">
-          <div data-bind="html: additionalResources"></div>
-        </div><br>
-        Discussion: <div data-bind="html: discussion"></div>
+  <div class="container row lighten-4 white-text" data-bind="foreach: locations" style="background: linear-gradient(rgba(255, 255, 255, 0), rgba(32, 32, 32, 0.301), rgba(255, 255, 255, 0));">
+    <div class="card hoverable">
+      <div class="card-image waves-effect waves-block waves-light">
+        <div data-bind="html: sourcemap" class=""></div>
       </div>
-      <div class="devider"></div>
-    </div>
+      <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4"><i class="material-icons right big">info</i></span>
+        <strong><h4 data-bind="text: projectName" class="black-text lighten-5"></h4></strong>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4"> <strong><span data-bind="text: projectName"></span></strong> <i class="material-icons right">close</i></span>
+          <br>
+          <div class="black-text lighten-5 details">
+              <div class="">
+                  <div class="container">
+                    <strong>Address</strong>
+                    <span class="badge right" data-bind="text: address"></span>
+                  </div><p></p>
+                  <div class="container">
+                    <strong>Postal Code</strong>
+                    <span class="badge right" data-bind="text: postalCode"></span>
+                  </div><p></p>
+                  <div class="container">
+                    <strong>Province</strong>
+                    <span class="badge right" data-bind="text: province"></span>
+                  </div><p></p>
+                  <div class="container">
+                    <strong>Country Name</strong>
+                    <span class="badge right" data-bind="text: countryName"></span>
+                  </div><p></p>
+                  <div class="container">
+                    <strong>Project Type</strong>
+                    <span class="badge right" data-bind="text: projectType"></span>
+                  </div><p></p>
+                  <div class="container">
+                    <strong>Project Status</strong>
+                    <span class="badge right" data-bind="text: status"></span>
+                  </div><p></p>
+                  <div class="container">
+                    <strong>Contact Name</strong>
+                    <span class="badge right" data-bind="text: contactName"></span>
+                  </div><p></p>
+                  <div class="container">
+                    <strong>Contact Email</strong>
+                    <span class="badge right" data-bind="text: contactEmailAddress"></span>
+                  </div><p></p>
+                <div class="card-action">
+                  <div data-bind="html: additionalResources"></div>
+                </div><br>
+                Discussion: <div data-bind="html: discussion"></div>
+              </div>
+              <div class="devider"></div>
+            </div>
+        </div>
+      </div>
     <hr style="clear:both; visibility:hidden;">
   </div>
   <center data-bind="html: loader"></center>
