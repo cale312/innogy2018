@@ -1,7 +1,8 @@
 body {
     font-family: Helvetica;
     background-attachment: fixed;
-    background-image: url("../imgs/battlefield-3-wind-energy.jpg")
+    background-image: url("../imgs/Webp.net-resizeimage.jpg");
+    background-size: cover;
 }
 
 .city {
