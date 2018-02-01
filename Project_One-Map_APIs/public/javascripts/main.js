@@ -3,6 +3,8 @@ const apiUrl = 'https://developer.nrel.gov/api/windexchange/schoolprojects?api_k
 
 let citiesData = null;
 
+const autoCompleteData = {};
+
 // Class for creating a new project instance with its details for displaying to the dom
 function Project(
   sourcemap,
@@ -51,7 +53,7 @@ const getLocation = (searchCity) => {
   const theProjects = [];
   if (searchCity.trim().length > 0) {
     citiesData.forEach((item) => {
-      if (item.city.toLowerCase() === searchCity.toLowerCase().trim() || item.address.toLowerCase() === searchCity.toLowerCase().trim()) {
+      if (item.city.toLowerCase() === searchCity.toLowerCase().trim()) {
         theProjects.push(item);
       }
     });
@@ -61,6 +63,7 @@ const getLocation = (searchCity) => {
 
 function AppViewModel() {
   const self = this;
+  self.allCities = ko.observable([]);
   self.locations = ko.observable([]);
   self.alert = ko.observable();
   self.loader = ko.observable();
@@ -73,10 +76,19 @@ function AppViewModel() {
     .then((data) => {
       const locations = [];
       data.forEach((dataCity) => {
-        locations.push(new Project(`<iframe width="150%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=${dataCity.Longitude}%2C${dataCity.Latitude}&amp;layer=mapnik&amp;marker=${dataCity.Latitude}%2C${dataCity.Longitude}" style="border: 1px solid black"></iframe>`, dataCity.Address, dataCity.AdditionalResources, dataCity.Discussion, dataCity.ContactEmailAddress, dataCity.ContactName, dataCity.ContactPhone, dataCity.City, dataCity.CountryName, dataCity.PostalCode, dataCity.ProjectName, dataCity.ProjectType, dataCity.Province, dataCity.Status, dataCity.TechnologyDescription));
+        locations.push(new Project(`<iframe width="150%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=${dataCity.Longitude}%2C${dataCity.Latitude}&amp;layer=mapnik&amp;marker=${dataCity.Latitude}%2C${dataCity.Longitude}"></iframe>`, dataCity.Address, dataCity.AdditionalResources, dataCity.Discussion, dataCity.ContactEmailAddress, dataCity.ContactName, dataCity.ContactPhone, dataCity.City, dataCity.CountryName, dataCity.PostalCode, dataCity.ProjectName, dataCity.ProjectType, dataCity.Province, dataCity.Status, dataCity.TechnologyDescription));
+        if (autoCompleteData[dataCity.City] === undefined) {
+          autoCompleteData[dataCity.City] = null;
+        }
       });
+      self.allCities(locations);
       self.data(true);
       self.loading('');
+      $(() => {
+        $('.autocomplete').autocomplete({
+          data: autoCompleteData,
+        });
+      });
       citiesData = locations;
     })
     .catch(err => err);
